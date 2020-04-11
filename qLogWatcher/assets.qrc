@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/about.png</file>
+        <file>assets/close.png</file>
+        <file>assets/copy.png</file>
+        <file>assets/exit.png</file>
+        <file>assets/find.png</file>
+        <file>assets/font.png</file>
+        <file>assets/highl.png</file>
+        <file>assets/icon.png</file>
+        <file>assets/install.png</file>
+        <file>assets/open.png</file>
+        <file>assets/restart.png</file>
+        <file>assets/stop.png</file>
+    </qresource>
+</RCC>
