@@ -8,13 +8,13 @@
 #define VER_PRODUCTVERSION_STR      "1.0\0"
 
 #define VER_COMPANYNAME_STR         "Pedro Bertella"
-#define VER_FILEDESCRIPTION_STR     "BoviPlus"
-#define VER_INTERNALNAME_STR        "BoviPlus"
+#define VER_FILEDESCRIPTION_STR     "qFileWatcher"
+#define VER_INTERNALNAME_STR        "qFileWatcher
 #define VER_LEGALCOPYRIGHT_STR      "Copyright 2020 Pedro Bertella"
-#define VER_LEGALTRADEMARKS1_STR    "Todos os Direitos Reservados"
+#define VER_LEGALTRADEMARKS1_STR    "All Rights Reserved"
 #define VER_LEGALTRADEMARKS2_STR    VER_LEGALTRADEMARKS1_STR
-#define VER_ORIGINALFILENAME_STR    "BoviPlus.exe"
-#define VER_PRODUCTNAME_STR         "BoviPlus"
+#define VER_ORIGINALFILENAME_STR    "qFileWatcher.exe"
+#define VER_PRODUCTNAME_STR         "qFileWatcher"
 
 #define VER_COMPANYDOMAIN_STR       ""
 
