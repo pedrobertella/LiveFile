@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "qLogWatcher"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "Pedro Bertella"
 #define MyAppURL "https://github.com/pedrobertella/qLogWatcher"
 #define MyAppExeName "qLogWatcher.exe"
@@ -22,9 +22,12 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
+ArchitecturesAllowed=x64
+ArchitecturesInstallIn64BitMode=x64
+MinVersion=6.1.7601
 LicenseFile=E:\Development\GitHub\qLogWatcher\LICENSE
 OutputDir=C:\Users\pedro\Desktop
-OutputBaseFilename=qFileWatcher 1.0 Install
+OutputBaseFilename=qLogWatcher 1.1 Install
 SetupIconFile=E:\Development\GitHub\qLogWatcher\icons\install.ico
 Compression=lzma
 SolidCompression=yes
@@ -37,8 +40,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "E:\Downloads\qFileWatcher\qLogWatcher.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\Downloads\qFileWatcher\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "E:\Downloads\qLogWatcher\qLogWatcher.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\Downloads\qLogWatcher\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
