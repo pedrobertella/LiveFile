@@ -16,8 +16,6 @@ public:
     ~Highlighting();
 
 private slots:
-    void on_btnAdd_clicked();
-
     void on_btnRemove_clicked();
 
     void on_btnExit_clicked();

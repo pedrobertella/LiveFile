@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>218</width>
-    <height>304</height>
+    <height>310</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>About qLogWatcher</string>
+   <string>About</string>
   </property>
   <property name="windowIcon">
    <iconset resource="assets.qrc">
@@ -63,7 +63,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Version 1.0.0</string>
+         <string>Version 1.1.0</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>

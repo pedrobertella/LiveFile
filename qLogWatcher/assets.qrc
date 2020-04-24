@@ -12,5 +12,6 @@
         <file>assets/open.png</file>
         <file>assets/restart.png</file>
         <file>assets/stop.png</file>
+        <file>assets/file.png</file>
     </qresource>
 </RCC>

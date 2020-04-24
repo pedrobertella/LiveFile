@@ -20,19 +20,12 @@ MainWindow::MainWindow(QWidget *parent, QApplication *a)
     watcher=new QFileSystemWatcher(this);
     connect(a, SIGNAL(aboutToQuit()), this, SLOT(saveSession()));
     restoreSession();
-//    QTabBar::close-button {
-//        image: url(close.png)
-//    }
-//    QTabBar::close-button:hover {
-//        image: url(close-hover.png)
-//    }
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_actionAbout_triggered()
 {
@@ -46,7 +39,6 @@ void MainWindow::on_actionCopy_triggered()
         QPlainTextEdit *edit = qobject_cast<QPlainTextEdit*>(ui->tabWidget->widget(ui->tabWidget->currentIndex()));
         edit->copy();
     }
-
 }
 
 void MainWindow::on_actionHighlighting_triggered()
@@ -73,7 +65,7 @@ void MainWindow::on_actionFont_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QStringList filePaths = QFileDialog::getOpenFileNames(this, "Open Files...", QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).at(0));
+    QStringList filePaths = QFileDialog::getOpenFileNames(this, "Open Files...");
     foreach(QString path, filePaths){
         QFile file(path);
         openFile(file.fileName());
@@ -96,7 +88,7 @@ void MainWindow::on_actionSave_triggered()
 void MainWindow::on_actionClose_all_triggered()
 {
     for(int i=ui->tabWidget->count()-1;i>-1;i--){
-        watcher->removePath(ui->tabWidget->tabText(i));
+        watcher->removePath(ui->tabWidget->tabToolTip(i));
         ui->tabWidget->removeTab(i);
     }
 }
@@ -104,7 +96,7 @@ void MainWindow::on_actionClose_all_triggered()
 void MainWindow::on_actionClose_file_triggered()
 {
     if(ui->tabWidget->count()>0){
-        watcher->removePath(ui->tabWidget->tabText(ui->tabWidget->currentIndex()));
+        watcher->removePath(ui->tabWidget->tabToolTip(ui->tabWidget->currentIndex()));
         ui->tabWidget->removeTab(ui->tabWidget->currentIndex());
     }
 }
@@ -127,7 +119,7 @@ void MainWindow::on_actionFind_triggered()
 void MainWindow::openFile(QString fileName)
 {
     for(int i=0;i<ui->tabWidget->count();i++){
-        if(ui->tabWidget->tabText(i)==fileName){
+        if(ui->tabWidget->tabToolTip(i)==fileName){
             ui->tabWidget->setCurrentIndex(i);
             return;
         }
@@ -142,10 +134,14 @@ void MainWindow::openFile(QString fileName)
         QList<QTextEdit::ExtraSelection> a;
         t->setExtraSelections(a);
     });
-    ui->tabWidget->insertTab(ui->tabWidget->count(), t, fileName);
+    QFileInfo fileInfo(fileName);
+    QString fileShortName(fileInfo.fileName());
+    ui->tabWidget->insertTab(ui->tabWidget->count(), t, QIcon(":/assets/file.png"), fileShortName);
+    ui->tabWidget->setTabToolTip(ui->tabWidget->count()-1, fileName);
     watcher->addPath(fileName);
     fillTextField(fileName);
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &MainWindow::fillTextField);
+    ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
 }
 
 void MainWindow::fillTextField(QString fileName)
@@ -158,7 +154,7 @@ void MainWindow::fillTextField(QString fileName)
     QTextStream stream(&file);
     int index = -1;
     for(int i=0;i<ui->tabWidget->count(); i++){
-        if(ui->tabWidget->tabText(i)==fileName){
+        if(ui->tabWidget->tabToolTip(i)==fileName){
             index = i;
         }
     }
@@ -174,7 +170,7 @@ void MainWindow::saveSession()
 {
     QStringList files;
     for(int i = 0; i<ui->tabWidget->count(); i++){
-        files << ui->tabWidget->tabText(i);
+        files << ui->tabWidget->tabToolTip(i);
     }
     QSettings s("Pedro Bertella", "qLogWatcher");
     s.beginGroup("session");
@@ -220,7 +216,7 @@ void MainWindow::on_actionStart_triggered()
 {
     watcher = new QFileSystemWatcher(this);
     for(int i = 0; i<ui->tabWidget->count(); i++){
-        watcher->addPath(ui->tabWidget->tabText(i));
+        watcher->addPath(ui->tabWidget->tabToolTip(i));
     }
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &MainWindow::fillTextField);
     ui->actionStart->setEnabled(false);

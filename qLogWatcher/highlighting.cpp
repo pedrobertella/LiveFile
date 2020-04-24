@@ -17,12 +17,6 @@ Highlighting::~Highlighting()
     delete ui;
 }
 
-void Highlighting::on_btnAdd_clicked()
-{
-    ui->lineText->clear();
-    ui->lineColor->clear();
-}
-
 void Highlighting::on_btnRemove_clicked()
 {
     if(!ui->listWidget->selectedItems().isEmpty()){
@@ -67,6 +61,8 @@ void Highlighting::on_btnSave_clicked()
         item->setText(ui->lineText->text());
         item->setData(Qt::UserRole, ui->lineColor->text());
     }
+    ui->lineText->clear();
+    ui->lineColor->clear();
 }
 
 void Highlighting::on_listWidget_currentRowChanged()
