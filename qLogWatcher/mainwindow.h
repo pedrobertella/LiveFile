@@ -46,6 +46,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QFileSystemWatcher *watcher;
+    QString lastLocation;
     void openFile(QString fileName);
     void fillTextField(QString fileName);
     void restoreSession();

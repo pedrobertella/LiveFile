@@ -44,4 +44,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     assets.qrc
+
 RC_FILE = winres.rc

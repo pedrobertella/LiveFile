@@ -63,7 +63,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Version 1.1.0</string>
+         <string>Version 1.2</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>

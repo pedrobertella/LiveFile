@@ -65,7 +65,12 @@ void MainWindow::on_actionFont_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QStringList filePaths = QFileDialog::getOpenFileNames(this, "Open Files...");
+    QStringList filePaths = QFileDialog::getOpenFileNames(this, "Open Files...", lastLocation);
+    if(!filePaths.isEmpty()){
+        QFileInfo fi(filePaths.at(0));
+        lastLocation = fi.absolutePath();
+    }
+
     foreach(QString path, filePaths){
         QFile file(path);
         openFile(file.fileName());
@@ -175,6 +180,7 @@ void MainWindow::saveSession()
     QSettings s("Pedro Bertella", "qLogWatcher");
     s.beginGroup("session");
     s.setValue("openFiles", files);
+    s.setValue("lastLoc", lastLocation);
     s.endGroup();
 }
 
@@ -183,6 +189,11 @@ void MainWindow::restoreSession()
     QSettings s("Pedro Bertella", "qLogWatcher");
     s.beginGroup("session");
     QStringList files = s.value("openFiles").toStringList();
+    if(s.value("lastLoc").isNull()){
+        lastLocation = QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).at(0);
+    }else{
+        lastLocation = s.value("lastLoc").toString();
+    }
     s.endGroup();
     foreach(QString path, files){
         QFile file(path);

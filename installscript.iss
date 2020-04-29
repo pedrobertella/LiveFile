@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "qLogWatcher"
-#define MyAppVersion "1.1"
+#define MyAppVersion "1.2"
 #define MyAppPublisher "Pedro Bertella"
 #define MyAppURL "https://github.com/pedrobertella/qLogWatcher"
 #define MyAppExeName "qLogWatcher.exe"
@@ -30,7 +30,7 @@ LicenseFile=E:\Development\GitHub\qLogWatcher\LICENSE
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=C:\Users\pedro\Desktop
-OutputBaseFilename=qLogWatcher 1.1 Installer
+OutputBaseFilename=qLogWatcher 1.2 Installer
 SetupIconFile=E:\Development\GitHub\qLogWatcher\icons\install.ico
 Compression=lzma
 SolidCompression=yes
