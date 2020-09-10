@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>assets/about.png</file>
         <file>assets/close.png</file>
         <file>assets/copy.png</file>
         <file>assets/exit.png</file>
@@ -13,5 +12,7 @@
         <file>assets/restart.png</file>
         <file>assets/stop.png</file>
         <file>assets/file.png</file>
+        <file>assets/banner.png</file>
+        <file>assets/salvar.png</file>
     </qresource>
 </RCC>

@@ -26,7 +26,7 @@ void Highlighting::on_btnRemove_clicked()
 
 void Highlighting::on_btnExit_clicked()
 {
-    QSettings s("Pedro Bertella", "qLogWatcher");
+    QSettings s("Pedro Bertella", "LiveFile");
     s.beginGroup("Highlighting");
     s.remove("");
     s.endGroup();
@@ -76,7 +76,7 @@ void Highlighting::on_listWidget_currentRowChanged()
 
 void Highlighting::initList()
 {
-    QSettings s("Pedro Bertella", "qLogWatcher");
+    QSettings s("Pedro Bertella", "LiveFile");
     s.beginGroup("Highlighting");
     QStringList list = s.childKeys();
     foreach(QString t, list){

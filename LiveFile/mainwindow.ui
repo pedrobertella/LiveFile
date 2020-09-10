@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>qLogWatcher</string>
+   <string>LiveFile</string>
   </property>
   <property name="windowIcon">
    <iconset resource="assets.qrc">
@@ -64,7 +64,7 @@
      <x>0</x>
      <y>0</y>
      <width>1018</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -129,7 +129,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset resource="assets.qrc">
-     <normaloff>:/assets/open.png</normaloff>:/assets/open.png</iconset>
+     <normaloff>:/assets/salvar.png</normaloff>:/assets/salvar.png</iconset>
    </property>
    <property name="text">
     <string>Save as...</string>
@@ -177,7 +177,7 @@
      <normaloff>:/assets/icon.png</normaloff>:/assets/icon.png</iconset>
    </property>
    <property name="text">
-    <string>About qLogWatcher</string>
+    <string>About LiveFile</string>
    </property>
   </action>
   <action name="actionCopy">

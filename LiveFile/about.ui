@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>218</width>
-    <height>310</height>
+    <width>389</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,26 +19,59 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QLabel" name="labelLogo">
-     <property name="minimumSize">
-      <size>
-       <width>200</width>
-       <height>100</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>200</width>
-       <height>100</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="assets.qrc">:/assets/about.png</pixmap>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelLogo">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>200</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>200</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="assets.qrc">:/assets/banner.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox">
@@ -50,7 +83,7 @@
       </font>
      </property>
      <property name="title">
-      <string>About qLogWatcher</string>
+      <string>About LiveFile</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -63,7 +96,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Version 1.2</string>
+         <string>Version 2.0-a</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -80,7 +113,7 @@
          </font>
         </property>
         <property name="text">
-         <string>qLogWatcher is a simple Log file viewer written in C++, using the Qt Framework</string>
+         <string>LiveFile is a simple Log file viewer written in C++, using the Qt Framework.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -97,8 +130,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Developed by:
-Pedro Bertella, 2020.</string>
+         <string>Developed by: Pedro Bertella, 2020.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -120,6 +152,13 @@ Pedro Bertella, 2020.</string>
        </property>
        <property name="text">
         <string>MIT Licence</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>LiveFile in GitHub</string>
        </property>
       </widget>
      </item>

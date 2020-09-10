@@ -49,7 +49,7 @@ void MainWindow::on_actionHighlighting_triggered()
 
 void MainWindow::on_actionFont_triggered()
 {
-    QSettings set("Pedro Bertella", "qLogWatcher");
+    QSettings set("Pedro Bertella", "LiveFile");
     set.beginGroup("FontSettings");
     QFont fontSet = set.value("font").value<QFont>();
     bool ok;
@@ -129,7 +129,7 @@ void MainWindow::openFile(QString fileName)
             return;
         }
     }
-    QSettings settings("Pedro Bertella", "qLogWatcher");
+    QSettings settings("Pedro Bertella", "LiveFile");
     settings.beginGroup("FontSettings");
     QFont fontSet = settings.value("font").value<QFont>();
     QPlainTextEdit *t = new QPlainTextEdit(this);
@@ -177,7 +177,7 @@ void MainWindow::saveSession()
     for(int i = 0; i<ui->tabWidget->count(); i++){
         files << ui->tabWidget->tabToolTip(i);
     }
-    QSettings s("Pedro Bertella", "qLogWatcher");
+    QSettings s("Pedro Bertella", "LiveFile");
     s.beginGroup("session");
     s.setValue("openFiles", files);
     s.setValue("lastLoc", lastLocation);
@@ -186,7 +186,7 @@ void MainWindow::saveSession()
 
 void MainWindow::restoreSession()
 {
-    QSettings s("Pedro Bertella", "qLogWatcher");
+    QSettings s("Pedro Bertella", "LiveFile");
     s.beginGroup("session");
     QStringList files = s.value("openFiles").toStringList();
     if(s.value("lastLoc").isNull()){
@@ -203,7 +203,7 @@ void MainWindow::restoreSession()
 
 QString MainWindow::colorText(QString text)
 {
-    QSettings s("Pedro Bertella", "qLogWatcher");
+    QSettings s("Pedro Bertella", "LiveFile");
     s.beginGroup("Highlighting");
     QStringList h = s.childKeys();
     QString res = "<p style=\"background-color: white\">"+text+"</p>";

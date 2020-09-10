@@ -1,6 +1,8 @@
 #include "about.h"
 #include "ui_about.h"
 #include <QMessageBox>
+#include <QDesktopServices>
+#include <QUrl>
 
 About::About(QWidget *parent) :
     QDialog(parent),
@@ -31,4 +33,9 @@ void About::on_pushButton_clicked()
 void About::on_pushButton_2_clicked()
 {
     QApplication::aboutQt();
+}
+
+void About::on_pushButton_3_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/pedrobertella/LiveFile"));
 }
