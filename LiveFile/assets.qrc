@@ -14,5 +14,6 @@
         <file>assets/file.png</file>
         <file>assets/banner.png</file>
         <file>assets/salvar.png</file>
+        <file>assets/theme.png</file>
     </qresource>
 </RCC>

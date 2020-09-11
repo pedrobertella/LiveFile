@@ -7,6 +7,8 @@
 #include <QFontDialog>
 #include <QSettings>
 #include <QAbstractSlider>
+#include <QStyleFactory>
+#include <QStyle>
 #include "finddialog.h"
 #include <QMessageBox>
 #include "highlighting.h"
@@ -17,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent, QApplication *a)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setTheme();
     watcher=new QFileSystemWatcher(this);
     connect(a, SIGNAL(aboutToQuit()), this, SLOT(saveSession()));
     restoreSession();
@@ -135,6 +138,7 @@ void MainWindow::openFile(QString fileName)
     QPlainTextEdit *t = new QPlainTextEdit(this);
     t->setFont(fontSet);
     t->setReadOnly(true);
+    t->setHidden(true);
     connect(t, &QPlainTextEdit::selectionChanged, this, [=](){
         QList<QTextEdit::ExtraSelection> a;
         t->setExtraSelections(a);
@@ -147,6 +151,7 @@ void MainWindow::openFile(QString fileName)
     fillTextField(fileName);
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &MainWindow::fillTextField);
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+    t->setHidden(false);
 }
 
 void MainWindow::fillTextField(QString fileName)
@@ -206,7 +211,7 @@ QString MainWindow::colorText(QString text)
     QSettings s("Pedro Bertella", "LiveFile");
     s.beginGroup("Highlighting");
     QStringList h = s.childKeys();
-    QString res = "<p style=\"background-color: white\">"+text+"</p>";
+    QString res = "<p style=\"background-color: "+textBkgColor+"\">"+text+"</p>";
     foreach(QString st, h){
         if(text.contains(st)){
             res = "<p style=\"background-color: "+s.value(st).toString()+";\">"+text+"</p>";
@@ -214,6 +219,57 @@ QString MainWindow::colorText(QString text)
     }
     s.endGroup();
     return res;
+}
+
+void MainWindow::setTheme()
+{
+    QSettings s("Pedro Bertella", "LiveFile");
+    int theme = s.value("theme").toInt();
+    if(theme==0){
+        qApp->setStyle(QStyleFactory::create("windowsvista"));
+        qApp->setPalette(QStyleFactory::create("windowsvista")->standardPalette());
+    }else if(theme==1){
+        qApp->setStyle(QStyleFactory::create("fusion"));
+        qApp->setPalette(QStyleFactory::create("fusion")->standardPalette());
+    }else if(theme==2){
+        qApp->setStyle(QStyleFactory::create("fusion"));
+        QPalette p = qApp->palette();
+        p.setColor(QPalette::Window,QColor(53,53,53));
+        p.setColor(QPalette::WindowText,Qt::white);
+        p.setColor(QPalette::Disabled,QPalette::WindowText,QColor(127,127,127));
+        p.setColor(QPalette::Base,QColor(42,42,42));
+        p.setColor(QPalette::AlternateBase,QColor(66,66,66));
+        p.setColor(QPalette::ToolTipBase,Qt::white);
+        p.setColor(QPalette::ToolTipText,Qt::white);
+        p.setColor(QPalette::Text,Qt::white);
+        p.setColor(QPalette::Disabled,QPalette::Text,QColor(127,127,127));
+        p.setColor(QPalette::Dark,QColor(35,35,35));
+        p.setColor(QPalette::Shadow,QColor(20,20,20));
+        p.setColor(QPalette::Button,QColor(53,53,53));
+        p.setColor(QPalette::ButtonText,Qt::white);
+        p.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(127,127,127));
+        p.setColor(QPalette::BrightText,Qt::red);
+        p.setColor(QPalette::Link,QColor(42,130,218));
+        p.setColor(QPalette::Highlight,QColor(42,130,218));
+        p.setColor(QPalette::Disabled,QPalette::Highlight,QColor(80,80,80));
+        p.setColor(QPalette::HighlightedText,Qt::white);
+        p.setColor(QPalette::Disabled,QPalette::HighlightedText,QColor(127,127,127));
+        qApp->setPalette(p);
+        textBkgColor = "black";
+        updateTextColor();
+    }else if(theme==3){
+        qApp->setStyle(QStyleFactory::create("windows"));
+        qApp->setPalette(QStyleFactory::create("windows")->standardPalette());
+        textBkgColor = "white";
+        updateTextColor();
+    }
+}
+
+void MainWindow::updateTextColor()
+{
+    for (int i=0;i<ui->tabWidget->count();i++) {
+        fillTextField(ui->tabWidget->tabToolTip(i));
+    }
 }
 
 void MainWindow::on_actionStop_triggered()
@@ -232,4 +288,16 @@ void MainWindow::on_actionStart_triggered()
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &MainWindow::fillTextField);
     ui->actionStart->setEnabled(false);
     ui->actionStop->setEnabled(true);
+}
+
+void MainWindow::on_actionChange_Theme_triggered()
+{
+    QSettings s("Pedro Bertella", "LiveFile");
+    int theme = s.value("theme").toInt();
+    theme++;
+    if(theme==4){
+        theme=0;
+    }
+    s.setValue("theme", theme);
+    setTheme();
 }

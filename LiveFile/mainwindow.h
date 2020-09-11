@@ -43,13 +43,17 @@ private slots:
 
     void on_actionStart_triggered();
 
+    void on_actionChange_Theme_triggered();
+
 private:
     Ui::MainWindow *ui;
     QFileSystemWatcher *watcher;
-    QString lastLocation;
+    QString lastLocation, textBkgColor = "white";
     void openFile(QString fileName);
     void fillTextField(QString fileName);
     void restoreSession();
     QString colorText(QString text);
+    void setTheme();
+    void updateTextColor();
 };
 #endif // MAINWINDOW_H

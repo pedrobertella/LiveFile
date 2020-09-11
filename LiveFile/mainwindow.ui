@@ -94,6 +94,8 @@
     <addaction name="actionHighlighting"/>
     <addaction name="separator"/>
     <addaction name="actionFont"/>
+    <addaction name="separator"/>
+    <addaction name="actionChange_Theme"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -253,6 +255,18 @@
    </property>
    <property name="shortcut">
     <string>F5</string>
+   </property>
+  </action>
+  <action name="actionChange_Theme">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/theme.png</normaloff>:/assets/theme.png</iconset>
+   </property>
+   <property name="text">
+    <string>Change Theme</string>
+   </property>
+   <property name="shortcut">
+    <string>F7</string>
    </property>
   </action>
  </widget>
