@@ -96,7 +96,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Version 2.0-a</string>
+         <string>Version 2.0</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>

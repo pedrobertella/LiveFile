@@ -14,15 +14,16 @@
 #include "highlighting.h"
 #include "about.h"
 
-MainWindow::MainWindow(QWidget *parent, QApplication *a)
+MainWindow::MainWindow(QWidget *parent, int argc, char *argv[])
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     setTheme();
     watcher=new QFileSystemWatcher(this);
-    connect(a, SIGNAL(aboutToQuit()), this, SLOT(saveSession()));
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(saveSession()));
     restoreSession();
+    openArguments(argc, argv);
 }
 
 MainWindow::~MainWindow()
@@ -203,6 +204,13 @@ void MainWindow::restoreSession()
     foreach(QString path, files){
         QFile file(path);
         openFile(file.fileName());
+    }
+}
+
+void MainWindow::openArguments(int argc, char *argv[])
+{
+    for(int i = 1; i<argc; i++){
+        openFile(argv[i]);
     }
 }
 

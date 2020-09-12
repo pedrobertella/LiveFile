@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, QApplication *a = nullptr);
+    MainWindow(QWidget *parent = nullptr, int argc = 0, char *argv[] = nullptr);
     ~MainWindow();
 
 private slots:
@@ -52,6 +52,7 @@ private:
     void openFile(QString fileName);
     void fillTextField(QString fileName);
     void restoreSession();
+    void openArguments(int argc, char *argv[]);
     QString colorText(QString text);
     void setTheme();
     void updateTextColor();

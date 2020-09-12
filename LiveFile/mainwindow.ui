@@ -203,7 +203,7 @@
     <string>Highlighting</string>
    </property>
    <property name="shortcut">
-    <string>F3</string>
+    <string>Ctrl+H</string>
    </property>
   </action>
   <action name="actionFont">
@@ -215,7 +215,7 @@
     <string>Font...</string>
    </property>
    <property name="shortcut">
-    <string>F9</string>
+    <string>Ctrl+Y</string>
    </property>
   </action>
   <action name="actionFind">
@@ -239,7 +239,7 @@
     <string>Stop</string>
    </property>
    <property name="shortcut">
-    <string>F6</string>
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionStart">
@@ -254,7 +254,7 @@
     <string>Restart</string>
    </property>
    <property name="shortcut">
-    <string>F5</string>
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actionChange_Theme">
@@ -266,7 +266,7 @@
     <string>Change Theme</string>
    </property>
    <property name="shortcut">
-    <string>F7</string>
+    <string>Ctrl+T</string>
    </property>
   </action>
  </widget>
